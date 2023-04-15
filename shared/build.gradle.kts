@@ -1,61 +1,94 @@
 plugins {
     kotlin("multiplatform")
+    kotlin("native.cocoapods")
     id("com.android.library")
+    id("org.jetbrains.compose")
+    kotlin("plugin.serialization")
 }
 
+version = "1.0-SNAPSHOT"
+val ktorVersion = extra["ktor.version"]
+val koinVersion = extra["koin.version"]
+
 kotlin {
-    android {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
-    
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
+    android()
+    ios()
+    iosSimulatorArm64()
+    jvm("desktop")
+
+    cocoapods {
+        summary = "Shared code for the sample"
+        homepage = "https://github.com/razaghimahdi/ShopKmm01"
+        ios.deploymentTarget = "14.1"
+        podfile = project.file("../iosApp/Podfile")
+        framework {
             baseName = "shared"
+            isStatic = true
         }
+        extraSpecAttributes["resources"] =
+            "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
 
     sourceSets {
-        val commonMain by getting
-        val commonTest by getting {
+        val commonMain by getting {
             dependencies {
-                implementation(kotlin("test"))
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                //implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                implementation(compose.animation)
+                implementation("org.jetbrains.compose.components:components-resources:1.3.0-beta04-dev879")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+                api("io.github.qdsfdhvh:image-loader:1.2.8")
+               // implementation("io.insert-koin:koin-core:$koinVersion")
+               // implementation("io.insert-koin:koin-stdlib:$koinVersion")
             }
         }
-        val androidMain by getting
-        val androidUnitTest by getting
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
-        val iosMain by creating {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
-            iosSimulatorArm64Main.dependsOn(this)
+        val androidMain by getting {
+            dependencies {
+                implementation("androidx.appcompat:appcompat:1.5.1")
+                implementation("androidx.core:core-ktx:1.9.0")
+                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+            }
         }
-        val iosX64Test by getting
-        val iosArm64Test by getting
-        val iosSimulatorArm64Test by getting
-        val iosTest by creating {
-            dependsOn(commonTest)
-            iosX64Test.dependsOn(this)
-            iosArm64Test.dependsOn(this)
-            iosSimulatorArm64Test.dependsOn(this)
+        val iosMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+                implementation("io.ktor:ktor-client-ios:$ktorVersion")
+            }
+        }
+        val iosTest by getting
+        val iosSimulatorArm64Main by getting {
+            dependsOn(iosMain)
+        }
+        val iosSimulatorArm64Test by getting {
+            dependsOn(iosTest)
+        }
+
+        val desktopMain by getting {
+            dependencies {
+                implementation(compose.desktop.common)
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.6.4")
+                implementation("io.ktor:ktor-client-cio:$ktorVersion")
+            }
         }
     }
 }
 
 android {
-    namespace = "com.razzaghi.shopkmm01"
     compileSdk = 33
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    sourceSets["main"].res.srcDirs("src/androidMain/res")
+    sourceSets["main"].resources.srcDir("src/commonMain/resources")
     defaultConfig {
         minSdk = 24
+        targetSdk = 33
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
