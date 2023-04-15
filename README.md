@@ -31,7 +31,6 @@ It's also responsible for mapping data from the domain layer into a format that 
 
 <img src="https://user-images.githubusercontent.com/61207818/232203143-1815f502-18d4-4051-b636-dc016699c770.png" alt="Clean Architecture in Android" width="600"/>
 
-## Screenshots
 
 ### Android
 
