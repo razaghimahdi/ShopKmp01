@@ -35,14 +35,26 @@ It's also responsible for mapping data from the domain layer into a format that 
 
 ### Android
 
-| Main                                | Detail                                |
-|-------------------------------------|--------------------------------------|
+When Android is one of your targets, 
+you can get the same experience for Android as if you were developing an Android app using Jetpack Compose.
+
+| Main                                       | Detail                                     |
+|--------------------------------------------|--------------------------------------------|
 | <img src="screenshots/1.jpg" width="300"/> | <img src="screenshots/2.jpg" width="300"/> |
 
 
 ### IOS
+> iOS support is in Alpha. It may change incompatibly and require manual migration in the future.
+
+Compose Multiplatform shares most of its API with Jetpack Compose, the Android UI framework developed by Google. 
+You can use the same APIs to build user interfaces for both Android and iOS.
 
 ### Desktop
+
+Compose Multiplatform targets the JVM and supports high-performance hardware-accelerated UI rendering on all major desktop platforms – macOS,
+Windows, and Linux.
+
+It has desktop extensions for menus, keyboard shortcuts, window manipulation, and notification management.
 
 ## Contributing
 Contributions are welcome! If you find a bug or would like to create a new feature, please submit a pull request.
@@ -53,6 +65,7 @@ This library is licensed under the MIT License. See [LICENSE.txt](https://github
 
 ### more ideas:
 https://github.com/JetBrains/compose-multiplatform-ios-android-template
+
 https://github.com/JetBrains/compose-multiplatform
 
 Developed by Mahdi Razzaghi Ghaleh
