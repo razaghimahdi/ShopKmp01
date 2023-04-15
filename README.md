@@ -48,7 +48,7 @@ It's also responsible for mapping data from the domain layer into a format that 
 Contributions are welcome! If you find a bug or would like to create a new feature, please submit a pull request.
 
 ## License
-This library is licensed under the MIT License. See [LICENSE.txt](https://github.com/razaghimahdi/ShopKmp01)
+This library is licensed under the MIT License. See [LICENSE.txt](https://github.com/razaghimahdi/ShopKmp01/blob/master/license)
 
 
 ### more ideas:
