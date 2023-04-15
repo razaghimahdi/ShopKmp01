@@ -16,6 +16,8 @@ Our goal is to create a high-quality, multiplatform shopping application that de
 Please stay tuned for updates and feel free to contribute to the project by submitting pull requests or opening issues. 
 Together, we can create a great shopping application that meets the needs of users across multiple platforms.
 
+![mobile-app-development-banner](https://user-images.githubusercontent.com/61207818/232203047-54940b08-d53f-41ce-a313-483a5fbeb9d3.jpg)
+
 ## Architecture
 The Jetpack Compose Multiplatform Shopping Application is built using the Clean Architecture and the MVI (Model-View-Intent) pattern. 
 The application is divided into the following layers:
@@ -27,13 +29,16 @@ It's also responsible for mapping data from the domain layer into a format that 
 
 **Data**: This layer includes the repository implementation that fetches data from the https://fakestoreapi.com server using Ktor.
 
+<img src="https://user-images.githubusercontent.com/61207818/232203143-1815f502-18d4-4051-b636-dc016699c770.png" alt="Clean Architecture in Android" width="600"/>
+
 ## Screenshots
 
 ### Android
 
-| Main                   | Detail                 |
-|------------------------|------------------------|
-| ![](screenshots/1.jpg) | ![](screenshots/2.jpg) |
+| Main                                | Detail                                |
+|-------------------------------------|--------------------------------------|
+| <img src="screenshots/1.jpg" width="300"/> | <img src="screenshots/2.jpg" width="300"/> |
+
 
 ### IOS
 
