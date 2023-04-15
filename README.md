@@ -4,6 +4,18 @@ Welcome to the documentation for the Jetpack Compose Multiplatform Shopping Appl
 This is a cross-platform application that is built using Jetpack Compose Multiplatform, a declarative framework for sharing UIs across multiple platforms with Kotlin. 
 The application allows users to browse, search, and purchase products from a shopping catalog on Android, iOS, and desktop platforms.
 
+
+## Development
+This project is a work in progress and is not yet complete. 
+We will continue to work on it and update it regularly until we have a complete shopping application. 
+We appreciate any feedback or suggestions that you may have to help us improve the project.
+
+We plan to add more features, improve the code quality, and make the application more user-friendly. 
+Our goal is to create a high-quality, multiplatform shopping application that demonstrates the power and flexibility of Jetpack Compose.
+
+Please stay tuned for updates and feel free to contribute to the project by submitting pull requests or opening issues. 
+Together, we can create a great shopping application that meets the needs of users across multiple platforms.
+
 ## Architecture
 The Jetpack Compose Multiplatform Shopping Application is built using the Clean Architecture and the MVI (Model-View-Intent) pattern. 
 The application is divided into the following layers:
