@@ -8,16 +8,20 @@ The application allows users to browse, search, and purchase products from a sho
 The Jetpack Compose Multiplatform Shopping Application is built using the Clean Architecture and the MVI (Model-View-Intent) pattern. 
 The application is divided into the following layers:
 
-** Presentation **: This layer includes the Jetpack Compose user interface components and logic. 
+**Presentation**: This layer includes the Jetpack Compose user interface components and logic. 
 It's also responsible for mapping data from the domain layer into a format that can be displayed by the user interface.
 
-** Domain **: This layer includes the business logic and use cases of the application. It's also responsible for defining the data models and the repository interfaces.
+**Domain**: This layer includes the business logic and use cases of the application. It's also responsible for defining the data models and the repository interfaces.
 
-** Data **: This layer includes the repository implementation that fetches data from the https://fakestoreapi.com server using Ktor.
+**Data**: This layer includes the repository implementation that fetches data from the https://fakestoreapi.com server using Ktor.
 
 ## Screenshots
 
 ### Android
+
+| Main                   | Detail                 |
+|------------------------|------------------------|
+| ![](screenshots/1.jpg) | ![](screenshots/2.jpg) |
 
 ### IOS
 
@@ -27,7 +31,7 @@ It's also responsible for mapping data from the domain layer into a format that 
 Contributions are welcome! If you find a bug or would like to create a new feature, please submit a pull request.
 
 ## License
-This library is licensed under the MIT License. See [LICENSE.txt](https://github.com/razaghimahdi/ShopKmm01)
+This library is licensed under the MIT License. See [LICENSE.txt](https://github.com/razaghimahdi/ShopKmp01)
 
 
 ### more ideas:
