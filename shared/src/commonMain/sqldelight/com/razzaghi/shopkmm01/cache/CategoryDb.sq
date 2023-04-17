@@ -1,0 +1,13 @@
+CREATE TABLE  category_Entity(
+    category TEXT NOT NULL PRIMARY KEY
+);
+
+selectAll:
+SELECT *
+FROM category_Entity;
+
+insertCategory:
+INSERT OR REPLACE
+INTO category_Entity (
+    category
+) VALUES (? );
