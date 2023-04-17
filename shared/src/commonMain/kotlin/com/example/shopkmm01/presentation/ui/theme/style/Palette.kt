@@ -8,6 +8,7 @@ object ShopKmm01AppColors {
     val primary = Color(0xFFf4643f)
     val primaryVariant = Color(0xFFe64624)
     val secondary = Color(0xFF272320)
+    val splashBackground = Color(0xFF272320)
 
 
 
