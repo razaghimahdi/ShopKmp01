@@ -1,26 +1,28 @@
 package com.example.shopkmm01.presentation.screen.main
 
+import app.cash.sqldelight.db.SqlDriver
 import com.example.shopkmm01.business.core.DataState
 import com.example.shopkmm01.business.core.Queue
 import com.example.shopkmm01.business.core.UIComponent
 import com.example.shopkmm01.business.domain.main.Category
 import com.example.shopkmm01.business.interactors.main.MainInteractors
-import kotlinx.coroutines.CoroutineScope
+ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 
-class MainViewModel {
+class MainViewModel(sqlDriver: SqlDriver) {
+
     private val viewModelScope = CoroutineScope(Dispatchers.Main)
 
-    private val mainInteractors = MainInteractors.build()
-
-    val state = MutableStateFlow<MainState>(MainState())
+    private lateinit var mainInteractors: MainInteractors
 
 
-    fun onTriggerEvent(event: MainEvent) {
+    internal val state = MutableStateFlow<MainState>(MainState())
+
+
+    internal fun onTriggerEvent(event: MainEvent) {
         when (event) {
             is MainEvent.GetCategories -> {
                 getCategories()
@@ -45,15 +47,16 @@ class MainViewModel {
 
 
     init {
+        mainInteractors = MainInteractors.build(sqlDriver)
         onTriggerEvent(MainEvent.GetProducts)
     }
 
     private fun updateSelectedCategory(value: Category) {
-        state.value = state.value.copy(selectedCategory = value )
+        state.value = state.value.copy(selectedCategory = value)
     }
 
     private fun getProducts() {
-        mainInteractors.getProducts.execute()
+        mainInteractors.getProductsFromCache.execute()
             .onEach { dataState ->
                 when (dataState) {
                     is DataState.Response -> {
@@ -74,7 +77,7 @@ class MainViewModel {
     }
 
     private fun getCategories() {
-        mainInteractors.getCategories.execute()
+        mainInteractors.getCategoriesFromCache.execute()
             .onEach { dataState ->
                 when (dataState) {
                     is DataState.Response -> {
