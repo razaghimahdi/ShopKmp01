@@ -27,7 +27,20 @@ It's also responsible for mapping data from the domain layer into a format that 
 
 **Domain**: This layer includes the business logic and use cases of the application. It's also responsible for defining the data models and the repository interfaces.
 
-**Data**: This layer includes the repository implementation that fetches data from the https://fakestoreapi.com server using Ktor.
+**Data**: This layer includes the repository implementation that fetches data from the https://fakestoreapi.com server using Ktor after that cache data from network using SqlDelight.
+
+## Data Caching
+
+To improve the performance and user experience of the Jetpack Compose Multiplatform Shopping Application, we have added SQL Delight to cache data from the network. 
+SQL Delight is a multiplatform database that generates Kotlin APIs based on your SQL schema. 
+It provides compile-time checks and helps to avoid runtime errors that can occur with traditional ORM libraries.
+
+We have created a database schema to store the product catalog data retrieved from the https://fakestoreapi.com server using Ktor.
+When the user requests the data, the application checks the database first and retrieves the data from the cache if it exists. 
+If the data is not in the cache, the application retrieves it from the network and stores it in the cache for future use.
+
+Using SQL Delight has improved the application's performance and reduced the number of network requests, 
+resulting in a better user experience.
 
 <img src="https://user-images.githubusercontent.com/61207818/232203143-1815f502-18d4-4051-b636-dc016699c770.png" alt="Clean Architecture in Android" width="600"/>
 
@@ -37,9 +50,9 @@ It's also responsible for mapping data from the domain layer into a format that 
 When Android is one of your targets, 
 you can get the same experience for Android as if you were developing an Android app using Jetpack Compose.
 
-| Main                                       | Detail                                     |
-|--------------------------------------------|--------------------------------------------|
-| <img src="screenshots/1.jpg" width="300"/> | <img src="screenshots/2.jpg" width="300"/> |
+| Splash                                     | Main                                       | Detail                                     |
+|--------------------------------------------|--------------------------------------------|--------------------------------------------|
+| <img src="screenshots/3.jpg" width="300"/> | <img src="screenshots/1.jpg" width="300"/> | <img src="screenshots/2.jpg" width="300"/> |
 
 
 ### IOS
@@ -56,7 +69,8 @@ Windows, and Linux.
 It has desktop extensions for menus, keyboard shortcuts, window manipulation, and notification management.
 
 ## Contributing
-Contributions are welcome! If you find a bug or would like to create a new feature, please submit a pull request.
+Contributions are welcome! If you have any feedback or suggestions, please don't hesitate to let us know. 
+We appreciate your contributions and support. Also if you find a bug or would like to create a new feature, please submit a pull request.
 
 ## License
 This library is licensed under the MIT License. See [LICENSE.txt](https://github.com/razaghimahdi/ShopKmp01/blob/master/license)
